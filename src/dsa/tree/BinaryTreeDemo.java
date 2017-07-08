@@ -13,17 +13,17 @@ import java.util.List;
  */
 public class BinaryTreeDemo {
     public static void main(String[] args) {
-//        BinarySearchTree<Integer> bt = new BinarySearchTree<>();
-//        bt.insert(123);
-//        bt.insert(23);
-//        bt.insert(34);
-//        bt.insert(234);
-//        bt.insert(345);
-//        bt.insert(321);
-//        bt.insert(2);
-//        bt.insert(320);
-//        bt.insert(319);
-//        
+        BinarySearchTree<Integer> bt = new BinarySearchTree<>();
+        bt.insert(123);
+        bt.insert(23);
+        bt.insert(34);
+        bt.insert(234);
+        bt.insert(345);
+        bt.insert(321);
+        bt.insert(2);
+        bt.insert(320);
+        bt.insert(319);
+        bt.inOrder();
 //
 //        if(bt.isBST()){
 //            System.out.println("tree is BST");
@@ -46,21 +46,21 @@ public class BinaryTreeDemo {
 ////       bt.postOrder();        
 //     
 
-
-        BinaryTree<Integer> bt = new BinaryTree<>();
-        bt.insert(1);
-        bt.insert(2);
-        bt.insert(3);
-        bt.insert(4);
-        bt.insert(5);
-        bt.insert(6);
-        bt.insert(2);
-        bt.insert(7);
-        bt.insert(8);
-        
-        //List<Integer> ls = bt.rootToLeafSum(8);
-        
-        bt.postOrder();
+//
+//        BinaryTree<Integer> bt = new BinaryTree<>();
+//        bt.insert(1);
+//        bt.insert(2);
+//        bt.insert(3);
+//        bt.insert(4);
+//        bt.insert(5);
+//        bt.insert(6);
+//        bt.insert(2);
+//        bt.insert(7);
+//        bt.insert(8);
+//        
+//        //List<Integer> ls = bt.rootToLeafSum(8);
+//        
+//        bt.postOrder();
 
     }
 }
