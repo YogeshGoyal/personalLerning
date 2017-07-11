@@ -89,6 +89,33 @@ public class BinarySearchTree<E> {
         return temp.getData();
     }
     
+    public int findMinDepth(){
+        return findMinDepth(root);
+    }
+    private int findMinDepth(Node<E> node){
+        if(node == null){
+            return 0;
+        }
+        int lheight = findMinDepth(node.getLeft());
+        int rheight = findMinDepth(node.getRight());
+        return Integer.min(lheight, rheight) +1 ;
+    }
+    
+    public int maxPathSum(){
+        return maxPathSum(root,Integer.MIN_VALUE);
+    }
+    
+    private int maxPathSum(Node<E> node, int sum){
+        if(node == null){
+            return 0;
+        }
+        if(node.getLeft()==null && node.getRight() == null){
+            return node.getData().hashCode();
+        }
+        int lsum = maxPathSum(node.getLeft(),sum);
+        int rsum = maxPathSum(node.getRight(),sum);
+        return Integer.max(lsum,rsum)+ node.getData().hashCode();
+    }
     /**
      * this method will be used to check if given tree is BST
      */

@@ -33,6 +33,6 @@ public class Demo {
             System.out.println("not exists");
         }
         
-        System.out.println("height: "+bt.findHeight());
+        System.out.println("maxPathSum: "+bt.maxPathSum());
     }
 }

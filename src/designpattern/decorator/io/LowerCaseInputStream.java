@@ -1,0 +1,39 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package designpattern.decorator.io;
+
+import java.io.FilterInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+
+/**
+ *
+ * @author yokukuma
+ */
+public class LowerCaseInputStream extends FilterInputStream{
+
+    public LowerCaseInputStream(InputStream in) {
+        super(in);
+    }
+
+    @Override
+    public int read() throws IOException {
+        int c = in.read();
+        return c == -1 ? -1 : Character.toLowerCase(c);
+    }
+
+    @Override
+    public int read(byte[] b, int off, int len) throws IOException {
+        int result = in.read(b, off, len);
+        for (int i = 0; i < off+result; i++) {
+            b[i] = (byte)Character.toLowerCase((char)b[i]);
+        }
+        return result;
+    }
+    
+    
+    
+}
