@@ -5,7 +5,7 @@
  */
 package designpattern.Structural.Bridge;
 
-import designpattern.Bridge.Shape;
+import designpattern.Structural.Bridge.Shape;
 
 /**
  *
@@ -16,7 +16,6 @@ public class Trangle extends Shape{
     public Trangle(Color color) {
         super(color);
     }
-
     
     @Override
     void applyColor() {

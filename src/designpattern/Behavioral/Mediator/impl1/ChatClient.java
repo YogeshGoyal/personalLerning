@@ -12,10 +12,10 @@ package designpattern.Behavioral.Mediator.impl1;
 public class ChatClient {
     public static void main(String[] args) {
         ChatMediatorImpl cmi = new ChatMediatorImpl();
-        User u1 = new UserImpl(cmi, "yogesh");
-        User u2 = new UserImpl(cmi, "Saket");
-        User u3 = new UserImpl(cmi, "divya");
-        User u4 = new UserImpl(cmi, "ashish");
+        User u1 = new UserImpl(cmi, "A");
+        User u2 = new UserImpl(cmi, "B");
+        User u3 = new UserImpl(cmi, "C");
+        User u4 = new UserImpl(cmi, "D");
         
         cmi.addUser(u1);
         cmi.addUser(u2);

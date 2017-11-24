@@ -4,8 +4,7 @@
  * and open the template in the editor.
  */
 package designpattern.Structural.Bridge;
-
-import designpattern.Bridge.Shape;
+import designpattern.Structural.Bridge.Shape;
 
 /**
  *

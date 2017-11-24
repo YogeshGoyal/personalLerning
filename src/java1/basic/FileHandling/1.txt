@@ -1,0 +1,274 @@
+Input from user can be taken in following way
+    Console (mainly used to read password from console)
+     
+    Scanner (to read primitive data as dynamic input in case of BufferedReader we need wrapper class to read primitive data type dynamically, 
+    java Scanner breaks input into token using delimiter default is whitespace)
+    
+Source for datastream (inputstream) can be anything like file,keyboard,array,string,socket on Internet etc
+
+System.in is object of class InputStream which hold input in byte format
+System.out is object of class PrintStream
+
+System class is part of java.lang package which every java program automatically import
+    
+InputStream read input in form of byte   (java.io)
+        InputStreamReader convert input from byte to character transfer (java.io)
+            BufferedReader take InputStreamReader as input to increase performance issue (java.io)
+            
+            
+            
+// check how serializable works and protected method used and how force method to use exception 
+// how clone works in java internally
+// read generics 
+// Stream API (Lambda Expression) java 1.8
+BuffferdReader and SCANNER FOR READING AND PRINTWRITTER FOR WRITTING in file       
+
+
+Exception
+=========
+
+Throwable
+    - Exception 
+        -checked 
+            - IOException
+            - SQL Exception
+            ----- lot of example
+        -unchecked (unchecked can't be handled in code as its runtime)
+            - RunTimeException
+                - ArithmaticException
+    - Error (cant be handled)
+    
+* If the superclass method does not declare an exception, subclass overridden method cannot declare the checked exception.
+* If the superclass method does not declare an exception, subclass overridden method cannot declare the checked exception but can declare unchecked exception.
+*  If the superclass method declares an exception, subclass overridden method can declare same, subclass exception or no exception but cannot declare parent exception.
+* If you are overriding any method, overridden method (i.e. declared in subclass) must not be more restrictive. The default modifier is more restrictive than protected. That is why there is compile time error.
+* Since Java 8, we can have static method in interface
+* By default Unchecked Exceptions are forwarded in calling chain, By default, Checked Exceptions are not forwarded in calling chain (propagated).
+* If the superclass method does not declare an exception, subclass overridden method cannot declare the checked exception.
+* If the superclass method does not declare an exception, subclass overridden method cannot declare the checked exception but can declare unchecked exception.
+
+collection and Generics
+==========
+
+collection (concept)
+Collection (interface)
+Collections (class)
+
+Collection(I)
+    -> List(I)
+       -> ArrayList(C)
+
+
+in 1.2 java Collection API was introduces
+in 1.5 generics were added. (eg Collection<Integer> c1 = new ArrayList<Integer>(); )
+in 1.7 generics enhanced no need to tell data type of RHS (eg Collection<Integer> c1 = new ArrayList<>(); )
+
+Collection does not work with index to work with index use List (order will be same) or Set (Set can't have duplicate value, order will not be same)
+
+
+JAVA 8 Features
+====================================================================================
+there are mainly below updates in JAVA 8
+    1. Functional Programming
+    2. Lambda Expression
+    3. Stream API
+    4. In java 8 we can define method in Interface.
+
+* method definition in interface can create diamond problem which was the reason of java not to introduce multiple inheritance 
+* In case of inheritance of both class with show method and interface with implemented method show , then calls method will be called as ALWAYS CLASS METHOD WILL HAVE MORE PRIORITY THEN INTERACE IN CASE OF CONFLICT
+* any Object class method cant be used as implemented method in interface (eg. default boolean equals(Object o){return true;}) will not work.
+* static method are allowed to define in java 1.8
+
+* Functional Interface: are having only 1 method declared (@FunctionalInterface annotation can be used to declare any interface as Functional Interface)
+* LAMBDA FUNCTION ONLY WORK WITH ONLY FUNCTIONAL INTERFACE
+    
+* all new addition to List interface like (forEach method ) are default method.
+* method can be passed as reference that is called method reference
+    to call method reference pass method name starting with "::"
+    (Sample list.forEach(i-> System.err.println(i));)
+    
+    
+MULTITHREADING IN JAVA
+======================
+
+we can use either extent Thread abstract class (need to implement run() method ) or can implement Runnable interface (same run method)
+* their is no difference in both, one is interface can be implement in any class but abstract method can be extent only in * class which is not having already extended any class.
+but in case of interface you have to create Thread object by passing object of base class and have to call start() on that 
+* add Synchronized keyword in front of method name to make it thread safe    
+
+Problem with Synchronization keyword:
+    > lot of wait because of wait and notify mechanism.
+    > there is no fairness policy to distribution of lock mechanism
+    > their is no API to identified how many thread are locked for getting lock.
+    > their is no way to specify maximum locking time.
+    > Synchronisation possible withing method or part of method. not possible to give flexibility across method.
+
+To Overcome above mentioned problem with Synchronized keyword, concurrent API introduced in JAVA which is having different API to overcome above problems
+    > Lock interface implementation ReentrantLock provide extensive operation for locking compare of traditional Synchronized keyboard
+    
+USE BELOW CODE ANALYZER 
+1. PMD: after installing select project then click (Windows-> Action Items)     (netbeans)
+2. FindBugs: go to Source-> inspect-> (select find bugs from configuration drop downs)   (netbeans)
+
+
+JVM ARCHITECTURE
+
+there are main 3 component of JVM
+    1. Class Loader SubSystem (its accept .class file and load extra .class files in JAVA API)
+        Class Loader subsystem has mainly 3 phases:
+            a. Load (responsible for loading byte code in memory from various resource like)
+                its involve 3 different type of class loader    
+                    i)      Application class loader (-CLASSPATH, -cp)
+                    ii)     Extension class loader (jre/lib/ext)
+                    iii)    Bootstrap class loader (rt.jar -> its all internal class files.)
+            b. Link
+                its 3 different phase:
+                    i) verify (looks at byte code and verify if its compatible ,means valid code.)
+                    ii) prepare (memory allocation to static variable here also class variable default value with memory allocation, memory allocation not for instance variable.)
+                    iii) resolve (all symbolic reference in current class resolve. means all reference to other class or reference to memory in constant pool)
+            c. Initialize
+                Static initializer runs here, also value to static value given here.
+    2. Runtime data type
+        a. method area (class data, meta data related to class load here.  like static variables, bytecode, class label constant pool)
+                Its basically memory allocation to JVM,its also called PERMGEN SPACE , default value is 64mb.
+                can be tuned using  -XX:MaxPermSize   (error of outOfmemory : PermGenS)
+                
+                FROM JAVA 8 its called METASPACE:(from JDK 1.8, moved PERMGEN SPACE TO SEPEARTE MEMORY IN NATIVE OPERATING SYSTEM)
+                    so default there is no limit of space.
+        b. Heap    (object area, all instance variable, arrays,)
+            Can be Tuned using  -Xms (minimum size) and -Xmx (maximum size)
+            (OutOFMEmory space in heap error thrown)
+        c. Java Stack
+            Its content Stack frame correspond to current method execution per thread.
+            its can be tuned using "-Xss"
+            (stackoverflow will be thrown)
+        d. PC register (its program counter register. PC is pointer to next instruction to be execute per thread.)
+        e. Native Method Stack (It contains all the native methods used in the application.)
+            
+    3.  Execution Engine      (its completely depends on NATIVE METHOD INTERFACE, which connect native method libraries like .dll files[for windows] and .so[genrally for unix platform] file to execution unit. all these NATIVE library can be found in jre/bin folder. these native library are platform specific.)
+        its having mainly below units.
+            a. INTERPRETER: once data is loaded by class loader in memory and next execution instruction is ready in Program counter,
+            then java Interpreter interpret current instruction. its take byte code instruction and looks at it, and find out what NATIVE operation has to be done and execute that native operation (thats why its depend on NATIVE METHOD INTERFACE)
+            b. JIT Compiler: Just In Time Compiler: (if certain set of instruction code are interpreted repeatedly then , its keep target machine code ready for execution for repeated code. so no more interpret again and again)
+            c. Hotspot profiler. (Hotspot profiler its keeps eye on current running instruction and greps lots of statistics on that byte code and those are usable in various format. So because of this its help JIT compiler to compile frequent use instruction)
+            d. Garbage collector (its responsible for unused object in memory area.)
+
+GARABAGE COLLECTOR:
+    Its automatic memory management its remove all unused object (dead object) means those are unusable.
+    live object are those are referred by another object.
+    Garbage collection are carried by daemon thread called "Garbage Collector"
+    we can not force gc to happen (System.gc())
+    
+    Garbage Collection steps:
+        1. Mark: Start from root node of your application (main)walks the object graphs marks object that are reachable as live.
+        2. Delete/sweep: delete unreachable object.
+        3. Compacting: compact the memory by moving around the object and making allocation contiguous other than fragmented.
+    
+    > Generally java garbage collector are called generational collectors.means it generate generation of object means its young or old.
+    So heap divided in 2 space: 
+        1. young generation space (its space where object created in starting) ("minor garbage collection" will run in young generation)
+            its contain below component
+                a. Eden space (its space where object created in starting as fresh, new object)
+                b. survivor space from (survivor space 1): (either eden space full, garbage collector will run and remove all dead object and moved all live object to "Survivor space")
+                c. survivor space to:  (survivor space 2) (when again eden is full, then all live object present in eden and survivor 1, will be moved to this area in next minor GC cycle) after this survivor 1 and eden space will be free. its avoid compacting steps which will be required in survivor 1. so in second eden full minor gc , we are directly moving all live object to survivor 2 not in survivor 1 to save compacting.
+                in next minor GC, all survivor 2 live object will be moved to survivor 1; these all things are happening to stop compacting.
+                
+                Also for all object movement in survivor space counter will increase for each movement. 
+                and with some threshold(lets say 16) all with that survivor count object will be moved to "old(Tenured) generation"
+                this can be set by passing argument "-XX:MaxTenuringThreashold"
+        2. old(Tenured) generation: if object survived for long time will be promote to old generation. 
+            later in "major garbage collection" in this area dead object wil be cleaned up.major garbage collection will run across heap, its run if old generation area will be about to full.
+             
+        MAJOR SWEEP WILL PAUSE OUR ALL APPLICATION.
+        
+        TYPE OF GARBAGE COLLECTOR:
+        1. SERIAL GC: basic garbage collector that run in single thread, can be used for basic application.
+        2. CONCURRENT GC (CMS): thread that perform GC along with application execution as application run, does not wait for old generation to be full, stops the world during mark/re-mark
+        this can be used when 
+            there is more memory
+            there is high number of CPU
+            application demands short pause
+        3. PARALLEL GC: uses multiple CPU to perform GC, multiple thread doing mark/sweep et. does not kick of untill until heap is near full. "stops the world" when its run 
+        this can be run when
+            there is less memory
+            there is lesser number of CPU
+            Application demands high throughput.
+        4. G1 GC: officially available in JAVA 1.7
+                its means Garbage collectors first.
+                its kind of concurrent and parallel
+                its make sure minimum amount of pause.
+            its divided heap in region and do compacting/sweeping of those region (so all young,old, survivor1 and survivor2 concept go away in this implementation .)
+            
+        below is way for selecting garbage collector
+        -XX:UseSerialGC
+        -XX:UseparallelGC
+        -XX:UseParallelOldGC
+        -XX:UseParNewGC
+        -XX:UseConMarkSweepGC
+        -XX:UseG1GC
+        
+        in Java 1.6 default GC: parallel
+        but in 1.7 default GC is G1
+        
+        Finalizer: protected void finalize() --> this method will be called always when any object go for garbage collection 
+            (but we should avoid using it, as its not sure when it will be run.)
+            
+        GC logging:
+            -verbose:gc
+            -XX:+PrintGCDetails
+            -Xloggx:gc.log
+        graphical tools can be used for GC (ViSUALVM)    (run jvisualvm command to open visualVM)
+        
+
+JAVA DATA STRUCTURE:
+=====================
+
+java data structure are known as collection 
+    All data structure implement Collection interface which is part of Collection Framework
+    
+Iterable(I)
+    Collection (I)
+        1. Set(I)  (non duplicate values)
+            a. SortedSet(I)
+                a.a. TreeSet(C) (The objects of TreeSet class are stored in ascending order.)
+            b. HashSet(C)
+            c. LinkedHashSet(C) (allow null and maintain insertion order)
+        2. List(I)
+            a. Vector(C)  (similar to ArrayList but Vector provide synchronization)
+                a.a. Stack(C)  (to add item push , to remove pop, peek() allow to check element )
+            b. ArrayList(C) (store object and can grow and shrink) (it can hold negative value also)(it is not thread safe)
+            c. LinkedList(C) (use pointer to keep track of element ) (LiknedList was introduces in JAVA7) (access to element is linear) (its used doubly linked list)
+        3. Queue(I)
+            a. PriorityQueue(C) (The PriorityQueue class provides the facility of using queue. But it does not orders the elements in FIFO manner. It inherits AbstractQueue class.)
+            b. Deque(I)
+                b.a. ArrayDeque (C)
+                b.b. LinkedList (C) (linkedList in java implement both Deque and List interface)
+                
+
+Collections is API which is having many method to process on above collection like binarySearch,max,min
+Each collection in Java has an Iterator object that can be used to traverse all the elements in the collection            
+The collection interface extend iterable interface which has method foreach() and interator() method 
+
+
+Java MAP Interface implementation
+
+Iterable(I)
+    MAP(I)
+        AbstractMap(I)
+            HASHMAP(C) (It contains only unique elements.It may have one null key and multiple null values.It maintains no order.)
+                LinkedHashMap(C) (It is same as HashMap instead maintains insertion order.)
+        SortedMap(I)
+            TreeMap(C) (It provides an efficient means of storing key/value pairs in sorted order.It cannot have null key but can have multiple null values.It is same as HashMap instead maintains ascending order.)
+
+            
+Iterable Interface have one method defined: Iterator<Item> iterator();
+    Where again Iterator is interface which declared 2 method hasNext() and next()
+    if your class implements Iterator interface , then you can use iterator API on object.
+    or shortened of Iterator (for (String s: stack)) or long end 
+    Iterator<String> iterator = stack.iterator();
+    while(iterator.hasNext()){
+        print(iterator.next())
+    }
+       
+
+        

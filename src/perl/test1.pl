@@ -3,17 +3,22 @@
 $\="\n"; # this is called ORS
 $/="\n"; # this is called IRS
 #print "Hello!\n";
-#my $str = "this is 234 5345 first string ..";
-#if($str =~ m/(\w+)/){
-#    print "<$1>" ;
-#}
+my $str = "this is 234 5345 first string ..";
+if($str =~ m/(\w+)/){
+    print "<$1>" ;
+}
 #
 #print "="x 70;
 #print "20" <<2;
 #
-#    my %hash = (red    => 1, blue   => 2, green  => 3,
-#                orange => 4, yellow => 5, purple => 6,
-#                black  => 7, grey   => 8, white  => 9);
+    my %hash = (red    => 1, blue   => 2, green  => 3,
+                orange => 4, yellow => 5, purple => 6,
+                black  => 7, grey   => 8, white  => 9);
+
+    for( keys %hash){
+        print "$_:" . $hash{$_};
+    }
+
 #
 # my @array = qw(red blue green);
 # print "some array elements in hash keys" if  @array ~~  %hash;

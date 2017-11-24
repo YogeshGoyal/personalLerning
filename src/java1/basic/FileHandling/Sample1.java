@@ -37,7 +37,7 @@ public class Sample1 {
 //        }
         
         Scanner sc2 = new Scanner(new FileReader(new File("D:\\personal\\work\\learning\\java_basic.txt") ));
-        PrintWriter pw = new PrintWriter(new File( "D:\\personal\\work\\learning\\1.txt") );
+        PrintWriter pw = new PrintWriter(new File( "C:\\Users\\yokukuma\\Documents\\NetBeansProjects\\personal\\src\\java1\\basic\\FileHandling\\1.txt") );
         while(sc2.hasNextLine()){
             String line = sc2.nextLine();
             pw.write(line+ "\n");
