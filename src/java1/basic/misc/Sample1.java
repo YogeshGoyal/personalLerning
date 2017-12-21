@@ -48,16 +48,16 @@ public class Sample1 {
         //        Integer i = 12;
         //        s1.print(i);
 
-        //        LOGGER.INSTANT1.setStr1("A");
-        //        LOGGER.INSTANT1.setStr2("B");
-        //        LOGGER.INSTANCE2.show();
+                LOGGER.INSTANT1.setStr1("A");
+                LOGGER.INSTANT1.setStr2("B");
+                LOGGER.INSTANCE2.show();
 
-        String str = "yogesh";
-        Scanner scanner = new Scanner(System.in);
-        System.out.print("Enter your Age: ");
-        int value = scanner.nextInt();
-        assert value>=18:" Not valid";  
-        System.out.println("value is "+value);  
+//        String str = "yogesh";
+//        Scanner scanner = new Scanner(System.in);
+//        System.out.print("Enter your Age: ");
+//        int value = scanner.nextInt();
+//        assert value>=18:" Not valid";  
+//        System.out.println("value is "+value);  
         
     }
 

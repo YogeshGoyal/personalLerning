@@ -14,10 +14,10 @@ my @arr = (1,2,6,5,4,3,2,1,4);
 my @new = unique(@arr);
 print "@new\n";
 
-
-use LWP::Simple;
-$url = get 'http://www.DevDaily.com/';
-
+#
+#use LWP::Simple;
+#$url = get 'http://www.DevDaily.com/';
+#
 
 
 #sub hi{

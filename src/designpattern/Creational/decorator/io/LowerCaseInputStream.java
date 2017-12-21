@@ -1,4 +1,4 @@
-package designpattern.Misc.decorator.io;
+package designpattern.Creational.decorator.io;
 
 import java.io.*;
 

@@ -28,26 +28,28 @@ public class test2 {
      byte i1 = 0;
      Integer i2= 0;
      var(i1,i2);
+        Thread tz = new Thread(()->{System.out.println("yogi");});
+        tz.start();
+     
+        Runnable r1 = new Runnable() {
+            @Override
+            public void run() {
+                System.out.println("this is call from thread1");
+            }
+        };
         
-//        Runnable r1 = new Runnable() {
-//            @Override
-//            public void run() {
-//                System.out.println("this is call from thread1");
-//            }
-//        };
-//        
-//        Runnable r2 = () -> {
-//            System.out.println("this call from r2");
-//        };
-//        
-//        Thread t1 = new Thread(r2);
-//        t1.start();
-//        
-//        TimePass timePass = (String test) -> {
-//                System.out.println("test string is: "+ test);
-//            };
-//        
-//        timePass.printString("hello boss");
+        Runnable r2 = () -> {
+            System.out.println("this call from r2");
+        };
+        
+        Thread t1 = new Thread(r2);
+        t1.start();
+        
+        TimePass timePass = (String test) -> {
+                System.out.println("test string is: "+ test);
+            };
+        
+        timePass.printString("hello boss");
     }
 
 }

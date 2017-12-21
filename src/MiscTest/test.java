@@ -10,6 +10,7 @@ import java.io.Console;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -27,14 +28,23 @@ import java.util.Scanner;
 public class test {
 
     public static void main(String[] args) throws FileNotFoundException {
+        
+        Console console = System.console();
+        if (console == null) {
+            System.out.println("No console");
+            System.exit(0);
+        }
 
-//        File f = new File("D:\\personal\\work\\learning\\java_basic.txt");
+        System.out.print("Enter your username: ");
+        String username = console.readLine();
+        System.out.println("name:"+ username);
+        File f = new File("D:\\personal\\work\\learning\\java_basic.txt");
 
-         int oldCapacity = -1234564;
-         System.out.println("new number: "+ Integer.toBinaryString(oldCapacity));
+//         int oldCapacity = -1234564;
+//         System.out.println("new number: "+ Integer.toBinaryString(oldCapacity));
 
 
-//        Scanner sc = new Scanner(f);
+        Scanner sc = new Scanner(f);
 //        
 //        while(sc.hasNextLine()){
 //            System.out.println(sc.nextLine());
@@ -54,12 +64,18 @@ public class test {
 //        
 //        Employee e1 = new Employee(1, 20000);
 //        Employee e2 = new Employee(2, 10000);
+//        Employee e3 = new Employee(4, 50000);
+//        Employee e4 = new Employee(3, 40000);
 //        
 //        List<Employee> l1 = new ArrayList<>();
 //        l1.add(e1);
 //        l1.add(e2);
+//        l1.add(e3);
+//        l1.add(e4);
 //        
-//        Collections.sort(l1,Employee.salaryCompare); 
+//        
+//        //Collections.sort(l1,Employee.salaryCompare); 
+//        Collections.sort(l1); 
 //        
 //        for (Employee object : l1) {
 //            System.out.println(object.id);
@@ -88,11 +104,7 @@ class Student implements Comparable<Student> {
 
     @Override
     public int hashCode() {
-        int hash = 5;
-        hash = 97 * hash + Objects.hashCode(this.name);
-        hash = 97 * hash + this.id;
-        hash = 97 * hash + this.age;
-        return hash;
+        return Objects.hash(this.name,this.id,this.age);
     }
 
     @Override
@@ -121,7 +133,7 @@ class Student implements Comparable<Student> {
 
 }
 
-class Employee {
+class Employee implements Comparable<Employee>{
 
     int salary;
     int id;
@@ -135,5 +147,8 @@ class Employee {
 
     public static Comparator<Employee> idCompare = (Employee o1, Employee o2) -> o1.id - o2.id;
 
-
+    @Override
+    public int compareTo(Employee o) {
+        return this.id - o.id;
+    }    
 }
