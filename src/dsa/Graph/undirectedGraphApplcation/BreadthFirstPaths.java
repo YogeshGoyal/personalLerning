@@ -3,9 +3,8 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package dsa.Graph.directedGraphApplication;
+package dsa.Graph.undirectedGraphApplcation;
 
-import dsa.Graph.undirectedGraphApplcation.AdjacencyUndirectedGraph;
 import java.util.ArrayDeque;
 import java.util.Queue;
 
@@ -13,13 +12,13 @@ import java.util.Queue;
  *
  * @author yokukuma
  */
-public class DirectedBFS {
-    
-    private boolean[] marked;
-    private int[] edgeTo;
-    private int s;
+public class BreadthFirstPaths {
 
-    public DirectedBFS(Digraph g, int s) {
+    private final boolean[] marked;
+    private final int[] edgeTo;
+    private final int s;
+
+    public BreadthFirstPaths(AdjacencyUndirectedGraph g, int s) {
         this.s = s;
         marked = new boolean[g.getSize()];
 
@@ -31,7 +30,7 @@ public class DirectedBFS {
         bfs(g, s);
     }
 
-    private void bfs(Digraph g, int source) {
+    private void bfs(AdjacencyUndirectedGraph g, int source) {
         Queue<Integer> queue = new ArrayDeque();
         queue.add(source);
         marked[source] = true;

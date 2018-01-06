@@ -32,6 +32,11 @@ public class MaxPQ <Key extends Comparable<Key>>  implements Iterable<Key>{
     public boolean isEmpty(){
         return N == 0;
     }
+    
+    public int size(){
+        return N ;
+    }
+    
     public void insert(Key key){
         // double size of array if necessary
         if(N >= pq.length -1 ){
@@ -80,23 +85,26 @@ public class MaxPQ <Key extends Comparable<Key>>  implements Iterable<Key>{
 
     private class HeapIterator implements Iterator<Key> {
 
-        private MaxPQ<Key> copy;
-        
+        Key[] copy;
+        int pos ;
         public HeapIterator() {
-            for(int i = 0; i<N;i++){
-                copy.insert(pq[i]);
+            pos =1;
+            copy = (Key[]) new Comparable[N];
+            for(int i =0; i<N ;i++){
+                copy[i] = pq[i];
             }
         }
         
         @Override
         public boolean hasNext() {
-            return !copy.isEmpty();
+            return pos != N;
         }
 
         @Override
         public Key next() {
             if (!hasNext()) throw new NoSuchElementException();
-            return copy.delMax();
+            pos++;
+            return copy[pos-1];
         }
     }
 

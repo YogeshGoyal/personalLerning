@@ -30,4 +30,4 @@ class cc1 {
             System.out.println("Garbage collected from object" + i);
             i++;
     }
-}
+} 

@@ -17,7 +17,7 @@ public class Selection {
         int hi = a.length - 1;
         while (hi > lo) {
             int j = partition(a,lo,hi);
-            if (j < k) lo = j+1;
+             if (j < k) lo = j+1;
             else if (j>k) hi = j-1;
             else
                 return a[k];

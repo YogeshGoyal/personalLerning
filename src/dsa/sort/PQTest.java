@@ -11,6 +11,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.PriorityQueue;
 
 /**
  *
@@ -22,15 +23,20 @@ public class PQTest {
     public static void main(String[] args) throws Exception {
         File fs = new File("C:\\Users\\yokukuma\\Desktop\\numbers.txt");
         MaxPQ<Integer> pq = new MaxPQ<>(500);
+        //PriorityQueue<Integer> javaPQ = new PriorityQueue<>();
         try (BufferedReader br = new BufferedReader(new FileReader(fs))) {
             String line;
             while( (line = br.readLine() ) != null){
                 pq.insert(Integer.parseInt(line));
+                
+                //javaPQ.add(Integer.parseInt(line));
             }
         }
-        
+        for(int i =1;i<pq.size();i++){
+            System.out.println(pq.delMax());
+        }
         for (Integer object : pq) {
-            System.out.println(object);
+            //System.out.println(object);
         }
         
 

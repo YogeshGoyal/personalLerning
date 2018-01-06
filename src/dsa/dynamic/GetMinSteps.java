@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package dsa.DP;
+package dsa.dynamic;
 
 /**
  * problem is that, for given number to reach 1 find total steps. allowed

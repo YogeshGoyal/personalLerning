@@ -19,7 +19,7 @@ import java.util.Scanner;
 public class Tester {
 
     public static void main(String[] args) throws FileNotFoundException {
-        File file = new File("C:\\Users\\yokukuma\\Documents\\NetBeansProjects\\DSA\\src\\dsa\\Graph\\graph.txt");
+        File file = new File("C:\\Users\\yokukuma\\Documents\\NetBeansProjects\\personal\\src\\dsa\\Graph\\graph.txt");
         Scanner sc = new Scanner(new FileReader(file));
         System.err.println("Enter number of vertices. ");
         int countOfVertices = sc.nextInt();
@@ -27,7 +27,6 @@ public class Tester {
 
         System.out.println("Number of edge you want");
         int edges = sc.nextInt();
-
         for (int i = 0; i < edges; i++) {
             int row = sc.nextInt();
             int column = sc.nextInt();
@@ -40,11 +39,11 @@ public class Tester {
         if(dfs.visited(2)){
             System.out.println("2 is part of directed dfs starting from 0");
         }
-//        
-//        Topological topological = new Topological(am);
-//        for (Object integer : topological.order()) {
-//            System.out.println(" "+ integer+ " " );
-//        }
+        
+        Topological topological = new Topological(am);
+        for (Object integer : topological.order()) {
+            System.out.println(" "+ integer+ " " );
+        }
 
         KosarajuSharirSCC cc = new KosarajuSharirSCC(am);
         

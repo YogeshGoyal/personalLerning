@@ -18,7 +18,7 @@ public class SelectionDemo {
         Comparable out = Selection.select(arr,11);
         System.out.println("7th element is: " + out);
 
-        QuickSort qs = new QuickSort();
+        //QuickSort qs = new QuickSort();
         //qs.sort(arr);
         System.out.println("\nAfter sort");
         for (Integer integer : arr) {
