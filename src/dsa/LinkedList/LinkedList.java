@@ -68,6 +68,20 @@ public class LinkedList<E> implements Iterable<E>{
         return null;
     }
 
+    
+    public Link getLink(E key) {
+        Link<E> current = head;
+        int counter = 0;
+        while (current != null) {
+            if (current.element == key) {
+                return current;
+            }
+            counter++;
+            current = current.getNext();
+        }
+
+        return null;
+    }
     void delete(int index) {
         Link<E> current = head;
         int counter = 1;
@@ -121,6 +135,36 @@ public class LinkedList<E> implements Iterable<E>{
     @Override
     public Iterator<E> iterator() {
         return new LinkedListIterator();
+    }
+
+    void swapKey(E k1, E k2) {
+        
+        // get link just before swapped element from linkedlist
+        Link key1Before=null;
+        Link key2Before=null;
+        Link current = head;
+        while(current.getNext()!= null){
+            if(current.getNext().getElement() == k1){
+                key1Before = current;
+            }
+            if(current.getNext().getElement() == k2){
+                key2Before = current;
+            }
+            current = current.getNext();
+        }
+        if(key1Before ==null || key2Before == null){
+            System.err.println("Key not found");
+            System.exit(1);
+        }
+        Link savelink1FromKey1  = key1Before.getNext().getNext();
+        Link savelink1FromKey2  = key2Before.getNext().getNext();
+        Link element1 = key1Before.getNext();
+        Link element2 = key2Before.getNext();
+        key1Before.setNext(element2);
+        key2Before.setNext(element1);
+        element1.setNext(savelink1FromKey2);
+        element2.setNext(savelink1FromKey1);
+        
     }
 
     private class LinkedListIterator implements Iterator<E> {

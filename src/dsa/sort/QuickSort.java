@@ -97,5 +97,15 @@ public class QuickSort {
     private static boolean less(Comparable v, Comparable u) {
         return v.compareTo(u) < 0;
     }
+    public static void main(String[] args) {
+        Integer[] arr = {4, 3, 6, 1, 3, 9, 2, 6, 4};
 
+        QuickSort sorting = new QuickSort();
+        sorting.sort(arr);
+
+        for (int i = 0; i < arr.length; i++) {
+            System.out.println(arr[i]);
+        }
+
+    }
 }

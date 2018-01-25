@@ -5,9 +5,11 @@
  */
 package dsa.BST;
 
+import java.util.Deque;
 import java.util.LinkedList;
 import java.util.PriorityQueue;
 import java.util.Queue;
+import java.util.Stack;
 
 /**
  *
@@ -52,126 +54,126 @@ public class BinarySearchTree<E> {
         }
         return node;
     }
-    
-    
-        public int findHeight(){
+
+    public int findHeight() {
         return findHeight(root);
     }
-    
-    private int findHeight(Node<E>  root) {
-        if(root == null){
+
+    private int findHeight(Node<E> root) {
+        if (root == null) {
             return -1;
         }
         int lheight = findHeight(root.getLeft());
         int rheight = findHeight(root.getRight());
-        return Integer.max(lheight, rheight) +1 ;
+        return Integer.max(lheight, rheight) + 1;
     }
-    
-    public E findMin(){
-        if(root == null){
+
+    public E findMin() {
+        if (root == null) {
             return null;
         }
-        Node<E>  temp = root;
-        while(temp.getLeft() != null){
+        Node<E> temp = root;
+        while (temp.getLeft() != null) {
             temp = temp.getLeft();
         }
         return temp.getData();
     }
-    
-    public E findMax(){
-        if(root == null){
+
+    public E findMax() {
+        if (root == null) {
             return null;
         }
         Node<E> temp = root;
-        while(temp.getRight() != null){
+        while (temp.getRight() != null) {
             temp = temp.getRight();
         }
         return temp.getData();
     }
-    
-    public int findMinDepth(){
+
+    public int findMinDepth() {
         return findMinDepth(root);
     }
-    private int findMinDepth(Node<E> node){
-        if(node == null){
+
+    private int findMinDepth(Node<E> node) {
+        if (node == null) {
             return 0;
         }
         int lheight = findMinDepth(node.getLeft());
         int rheight = findMinDepth(node.getRight());
-        return Integer.min(lheight, rheight) +1 ;
+        return Integer.min(lheight, rheight) + 1;
     }
-    
-    public int maxPathSum(){
-        return maxPathSum(root,Integer.MIN_VALUE);
+
+    public int maxPathSum() {
+        return maxPathSum(root, Integer.MIN_VALUE);
     }
-    
-    private int maxPathSum(Node<E> node, int sum){
-        if(node == null){
+
+    private int maxPathSum(Node<E> node, int sum) {
+        if (node == null) {
             return 0;
         }
-        if(node.getLeft()==null && node.getRight() == null){
+        if (node.getLeft() == null && node.getRight() == null) {
             return node.getData().hashCode();
         }
-        int lsum = maxPathSum(node.getLeft(),sum);
-        int rsum = maxPathSum(node.getRight(),sum);
-        return Integer.max(lsum,rsum)+ node.getData().hashCode();
+        int lsum = maxPathSum(node.getLeft(), sum);
+        int rsum = maxPathSum(node.getRight(), sum);
+        return Integer.max(lsum, rsum) + node.getData().hashCode();
     }
+
     /**
      * this method will be used to check if given tree is BST
      */
-    public boolean isBST(){
-        return isBST(root,Integer.MIN_VALUE,Integer.MAX_VALUE);
+    public boolean isBST() {
+        return isBST(root, Integer.MIN_VALUE, Integer.MAX_VALUE);
     }
-    
-    private boolean isBST(Node<E> node,Integer min,Integer max){
-        if(node == null){
+
+    private boolean isBST(Node<E> node, Integer min, Integer max) {
+        if (node == null) {
             return true;
         }
-        if(node.getData().hashCode() >= min &&
-           node.getData().hashCode() < max  &&
-           isBST(node.getLeft(), min, node.getData().hashCode())  &&
-                isBST(node.getRight(), node.getData().hashCode(), max)){
+        if (node.getData().hashCode() >= min
+                && node.getData().hashCode() < max
+                && isBST(node.getLeft(), min, node.getData().hashCode())
+                && isBST(node.getRight(), node.getData().hashCode(), max)) {
             return true;
         }
-            
+
         return false;
     }
-    
-    public boolean searchNode(E element){
-        return searchNode(element,root);
+
+    public boolean searchNode(E element) {
+        return searchNode(element, root);
     }
-    
-    private boolean searchNode(E element, Node<E> node){
-        if(node == null){
+
+    private boolean searchNode(E element, Node<E> node) {
+        if (node == null) {
             return false;
         }
-        if(node.getData().hashCode() == element.hashCode()){
+        if (node.getData().hashCode() == element.hashCode()) {
             return true;
         }
-        if(node.getData().hashCode()> element.hashCode()){
-            if(searchNode(element, node.getLeft())){
+        if (node.getData().hashCode() > element.hashCode()) {
+            if (searchNode(element, node.getLeft())) {
                 return true;
             }
-        }else{
-            if(searchNode(element, node.getRight())){
+        } else {
+            if (searchNode(element, node.getRight())) {
                 return true;
             }
         }
         return false;
     }
-    
-    public int countNode(){
+
+    public int countNode() {
         return countNode(root);
     }
-    
-    private int countNode(Node<E> node){
-        if(node == null){
+
+    private int countNode(Node<E> node) {
+        if (node == null) {
             return 0;
         }
-        return 1+ countNode(node.getLeft())+ countNode(node.getRight());
+        return 1 + countNode(node.getLeft()) + countNode(node.getRight());
     }
-    
-    
+
     public E getMin(Node<E> node) {
         if (node == null) {
             return null;
@@ -219,14 +221,15 @@ public class BinarySearchTree<E> {
         if (node != null) {
             pq.add(node);
         }
-        while(Boolean.TRUE) {
+        while (Boolean.TRUE) {
             int nodeCount = pq.size();
-            if(nodeCount ==0){
+            if (nodeCount == 0) {
                 break;
             }
-            while (nodeCount>0) {
+
+            while (nodeCount > 0) {
                 Node n = pq.remove();
-                System.out.print(n.getData()+" ");
+                System.out.print(n.getData() + " ");
                 if (n.getLeft() != null) {
                     pq.add(n.getLeft());
                 }
@@ -235,17 +238,84 @@ public class BinarySearchTree<E> {
                 }
                 nodeCount--;
             }
-            System.out.println("");
+            System.out.println(" end");
         }
 
+    }
+
+    public void printZigZagUsing2Stack() {
+        if (root == null) {
+            return;
+        }
+        Stack<Node> s1 = new Stack<>();
+        Stack<Node> s2 = new Stack<>();
+        s1.push(root);
+
+        while (!s1.isEmpty() || !s2.isEmpty()) {
+            while (!s1.isEmpty()) {
+                root = s1.pop();
+                System.out.print(root.data + " ");
+                if (root.left != null) {
+                    s2.push(root.left);
+                }
+                if (root.right != null) {
+                    s2.push(root.right);
+                }
+            }
+            while (!s2.isEmpty()) {
+                root = s2.pop();
+                System.out.print(root.data + " ");
+                if (root.right != null) {
+                    s1.push(root.right);
+                }
+                if (root.left != null) {
+                    s1.push(root.left);
+                }
+            }
+        }
+    }
+    
+    public void printZigZagUsing1Deque() {
+        if (root == null) {
+            return;
+        }
+        Deque<Node> d = new LinkedList<>();
+        d.offerLast(null);
+        d.offerFirst(root);
+        Stack<Node> s1 = new Stack<>();
+        Stack<Node> s2 = new Stack<>();
+        s1.push(root);
+        
+        while (!s1.isEmpty() || !s2.isEmpty()) {
+            while (!s1.isEmpty()) {
+                root = s1.pop();
+                System.out.print(root.data + " ");
+                if (root.left != null) {
+                    s2.push(root.left);
+                }
+                if (root.right != null) {
+                    s2.push(root.right);
+                }
+            }
+            while (!s2.isEmpty()) {
+                root = s2.pop();
+                System.out.print(root.data + " ");
+                if (root.right != null) {
+                    s1.push(root.right);
+                }
+                if (root.left != null) {
+                    s1.push(root.left);
+                }
+            }
+        }
     }
 }
 
 class Node<E> {
 
     E data;
-    private Node<E> left;
-    private Node<E> right;
+    public Node<E> left;
+    public Node<E> right;
 
     public Node(E element) {
         left = null;

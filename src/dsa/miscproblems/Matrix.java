@@ -12,23 +12,16 @@ package dsa.miscproblems;
 public class Matrix {
 
     public static void main(String[] args) {
-        int size = 2;
-        int[][] m1 = new int[size][size];
-        int[][] m2 = new int[size][size];
+        char[][] m = new char[5][4];
+        int counter =0;
+        for (int i = 0; i < 5; i++) {
+            for (int j = 0; j < 4; j++) {
+                m[i][j] = (char) ('a' + counter++);
+            }
+        }
+        
+        printDigonally(m);
 
-        for (int i = 0; i < size; i++) {
-            for (int j = 0; j < size; j++) {
-                m1[i][j] = i + j;
-                m2[i][j] = 2 * i + 2 * j;
-            }
-        }
-        int[][] mul = multiply(m1, m2);
-        for (int i = 0; i < size; i++) {
-            for (int j = 0; j < size; j++) {
-                System.out.print(mul[i][j] + "\t");
-            }
-            System.out.println("");
-        }
     }
 
     private static int[][] multiply(int[][] m1, int[][] m2) {
@@ -41,5 +34,22 @@ public class Matrix {
             }
         }
         return mul;
+    }
+
+    private static void printDigonally(char[][] m) {
+        for (int i = 0; i < 4; i++) {
+            for (int j = i; j >= 0; j--) {
+                System.out.print(" "+ m[j][i]+" " );
+            }
+            System.out.println("");
+        }
+        
+        for (int i = 3; i >= 0; i--) {
+            for (int j = 4; j >= i; j--) {
+                System.out.print(" "+ m[j][i]+" " );
+            }
+            System.out.println("");
+        }
+        
     }
 }

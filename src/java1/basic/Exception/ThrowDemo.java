@@ -13,6 +13,13 @@ public class ThrowDemo {
 
     public static void main(String[] args) {
 
+        Test t = new Test() {
+            @Override
+            public void print() {
+                System.out.println("printing test method");
+            }
+        }
+                t.print();
         int k = 11;
         // throw predeifned exception
         try {
@@ -34,4 +41,9 @@ class MyException extends Exception {
     public MyException(String str) {
         super(str);
     }
+}
+
+
+abstract class Test{
+    public abstract void print();
 }

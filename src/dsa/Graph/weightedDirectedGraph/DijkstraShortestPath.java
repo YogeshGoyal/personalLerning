@@ -23,6 +23,18 @@ public class DijkstraShortestPath {
     private DirectedEdge[] edgeTo; // edgeTo[v] = last edge on shortest s->v path
     private Queue<KeyValue> pq;    // priority queue of vertices
 
+        
+    private void relax(DirectedEdge e) {
+        int v = e.from();
+        int w = e.to();
+        if (distTo[w] > distTo[v] + e.weight()) {
+            distTo[w] = distTo[v] + e.weight();
+            edgeTo[w] = e;
+
+            pq.add(new KeyValue(distTo[w], w));
+        }
+    }
+    
     public DijkstraShortestPath(EdgeWeightedDigraph g, int s) {
         for (DirectedEdge edge : g.edges()) {
             if (edge.weight() < 0) {
@@ -98,17 +110,7 @@ public class DijkstraShortestPath {
     public double distTo(int v){
         return distTo[v];
     }
-    
-    private void relax(DirectedEdge e) {
-        int v = e.from();
-        int w = e.to();
-        if (distTo[w] > distTo[v] + e.weight()) {
-            distTo[w] = distTo[v] + e.weight();
-            edgeTo[w] = e;
 
-            pq.add(new KeyValue(distTo[w], w));
-        }
-    }
 
     public boolean hasPathTo(int v) {
         return distTo[v] < Double.POSITIVE_INFINITY;

@@ -5,6 +5,8 @@
  */
 package designpattern.Creational.DataInjection.example1;
 
+import java.util.Calendar;
+
 /**
  *
  * @author yokukuma
@@ -14,5 +16,10 @@ public class Demo {
         myApplication app = new myApplication();
         
         app.sendMail("message", "yogesh kumar");
+        
+        String str = String.valueOf("yogesh");
+        Integer i = Integer.valueOf("1");
+        Calendar c = Calendar.getInstance();
+        System.out.println(str);
     }
 }

@@ -13,7 +13,7 @@ public class MethodReferencing {
 
     public static void main(String[] args) {
         MyClass m = new MyClass();
-        //below is mrthod referencing, for method referencing both method should have smae signature.
+        //below is method referencing, for method referencing both method should have smae signature.
         MyInterfce m2 = m::myMethod;
         System.out.println(m2.sayMethod("yogesh"));
         

@@ -6,6 +6,8 @@
 package java1.basic.MultiThreading;
 
 import java.util.LinkedList;
+import java.util.concurrent.ArrayBlockingQueue;
+import java.util.concurrent.BlockingQueue;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -54,7 +56,6 @@ public class ProducerConsumer {
     
     private LinkedList<Integer> list = new LinkedList<>();
     private int capicity = 3;
-
     public void produce() throws InterruptedException {
         int value = 0;
         while (true) {

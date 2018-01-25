@@ -18,5 +18,13 @@ public class test4 {
         
         BigDecimal d3 = d1.subtract(d2);
         System.out.println(d3);
+        
+        String str1 = new String("yogesh");
+        char[] name= str1.toCharArray();
+        String str2 = new String(str1);
+        System.out.println(str1+" "+str1.hashCode());
+        System.out.println(str2+" "+str2.hashCode());
+        System.out.println(name+" "+name.hashCode());
+        
     }
 }

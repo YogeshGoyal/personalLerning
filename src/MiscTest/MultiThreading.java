@@ -40,8 +40,14 @@ public class MultiThreading {
             c.deposit(2000);
             
         });
-        t1.start();
-        t2.start();
+        //t1.start();
+        //t2.start();
+        MultiThreading mt = new MultiThreading();
+        //mt.deadlock();
+        
+        Table t = new Table();
+        t.printTable(10);
+        
     }
     
      void deadlock(){
@@ -84,6 +90,13 @@ public class MultiThreading {
 
         t1.start();
         t2.start();
+        
+        Thread thread = new Thread(new Runnable() {
+                   @Override
+                   public void run() {
+                       throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+                   }
+               });
     }
 }
 

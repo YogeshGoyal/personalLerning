@@ -17,7 +17,6 @@ class TreeNode<ITEM> {
     private ITEM value;
     private List<TreeNode<ITEM>> children;
     private TreeNode<ITEM> parent;
-
     public TreeNode() {
     }
 

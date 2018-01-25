@@ -16,20 +16,27 @@ public class LinkedListDemo {
 
     public static void main(String[] args) throws InterruptedException {
         LinkedList<Integer> ls = new LinkedList<>();
-        ls.addLast(11);
-        ls.addLast(3);
-        ls.addLast(2);
-        ls.addLast(8);
+        ls.addLast(10);
+        ls.addLast(15);
+        ls.addLast(12);
+        ls.addLast(13);
+        ls.addLast(20);
+        ls.addLast(14);
         //       ls.delete(0);
         //ls.delete(0);
-        System.out.println("Before reverse: ");
-        Thread.sleep(100);
+//        System.out.println("Before reverse: ");
+//        Thread.sleep(100);
+        for (Integer l : ls) {
+            System.out.println(l);
+        }
+        ls.swapKey(12,20);
+        System.out.println("After swapping");
         for (Integer l : ls) {
             System.out.println(l);
         }
 
-        ls.reverseRec();
-        System.out.println("After reverse: ");
+//        ls.reverseRec();
+//        System.out.println("After reverse: ");
         //ls.printList();
 
         for (Integer l : ls) {

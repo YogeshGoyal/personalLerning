@@ -38,6 +38,8 @@ public class CounterSort {
         for (int i = 1; i < arr.length; i++) {
             aux[i] = aux[i] + aux[i-1];
         }
+        
+        // if we will interate from last element output sorted array will be STABLE
         Integer[] b  = new Integer[arr.length];
         for (int i = arr.length -1 ; i >= 0; i--) {
             b[--aux[arr[i]]] = arr[i]; 

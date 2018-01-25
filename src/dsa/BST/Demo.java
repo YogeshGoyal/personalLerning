@@ -15,24 +15,26 @@ public class Demo {
         BinarySearchTree<Integer> bt = new BinarySearchTree<>();
         bt.insert(123);
         bt.insert(23);
-        bt.insert(34);
-        bt.insert(234);
-        bt.insert(345);
-        bt.insert(321);
-        bt.insert(2);
+        bt.insert(134);
+        bt.insert(12);
+        bt.insert(45);
+        bt.insert(124);
+        bt.insert(135);
         bt.insert(320);
         bt.insert(319);
         bt.delete(234);
         //bt.inorder();
         bt.printLevel();
-        System.out.println("heee");
-        System.out.println("total element: "+ bt.countNode());
-        if(bt.searchNode(319) == Boolean.TRUE){
-            System.out.println("exist");
-        }else{
-            System.out.println("not exists");
-        }
-        
-        System.out.println("maxPathSum: "+bt.maxPathSum());
+        System.out.println("zig zag print of tree is: ");
+        bt.printZigZagUsing2Stack();
+//        System.out.println("heee");
+//        System.out.println("total element: "+ bt.countNode());
+//        if(bt.searchNode(319) == Boolean.TRUE){
+//            System.out.println("exist");
+//        }else{
+//            System.out.println("not exists");
+//        }
+//        
+//        System.out.println("maxPathSum: "+bt.maxPathSum());
     }
 }

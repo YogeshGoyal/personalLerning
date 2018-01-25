@@ -14,5 +14,11 @@ public class PizzaMaker {
         Pizza pz = new TomotoSauce(new Mozzarella(new TomotoSauce(new BasicPizza())));
         System.out.println("total cost:" + pz.getCost());
         System.out.println("Description:" + pz.getDescriptin());
+        
+        System.out.println("can you please add some more tomoto");
+        Pizza pz2 = new TomotoSauce(pz);
+        System.out.println("total cost:" + pz2.getCost());
+        System.out.println("Description:" + pz2.getDescriptin());
+        
     } 
 }

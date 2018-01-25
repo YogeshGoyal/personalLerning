@@ -43,7 +43,7 @@ public class MaxPQ <Key extends Comparable<Key>>  implements Iterable<Key>{
             resize(2*pq.length);
         }
         pq[++N] = key;
-        swim(N);
+        swim(N); 
     }
     public Key delMax(){
         if(isEmpty()) throw new NoSuchElementException("Priority queue underflow");
@@ -108,4 +108,17 @@ public class MaxPQ <Key extends Comparable<Key>>  implements Iterable<Key>{
         }
     }
 
+    public static void main(String[] args) {
+        MaxPQ<Integer> pq = new MaxPQ<>(10);
+        pq.insert(23);
+        pq.insert(43);
+        pq.insert(13);
+        pq.insert(23);
+        pq.insert(23);
+        pq.insert(2);
+        pq.insert(100);
+        while(!pq.isEmpty()){
+            System.out.println(pq.delMax());
+        }
+    }
 }

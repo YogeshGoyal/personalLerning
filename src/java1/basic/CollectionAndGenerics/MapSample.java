@@ -9,6 +9,7 @@ import java.util.HashMap;
 import java.util.Hashtable;
 import java.util.Map;
 import java.util.Set;
+import java.util.TreeMap;
 
 /**
  *
@@ -26,10 +27,13 @@ public class MapSample {
         // in hasmap and hashtable insertion order is not fixed, to acchive fixed insert
         // order use LINKEDHASHMAP 
         // TREEHASHMAP all element are sorted 
-        Map<Integer, String> map = new Hashtable<>();
+        Map<Integer, String> map = new HashMap<>();
         map.put(1, "yogesh");
         map.put(3, "kumar");
         map.put(2, "goyal");
+        map.put(2, "goyal");
+        map.put(22, "goyal");
+        map.put(12, "goyal");
 
         Set<Integer> keys = map.keySet();
         for (Integer key : keys) {

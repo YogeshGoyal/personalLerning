@@ -17,10 +17,11 @@ public class ThreadDemo1 {
         //hi.show();
         //hello.show();
         
-        //Thread t1 = new Thread(hello);
-        hi.start();
+        Thread t1 = new Thread(hello);
+        t1.start();
+        //hi.start();
         //Thread t2 = new Thread(hi);
-        hello.start();
+        //hello.start();
     }
 }
 
